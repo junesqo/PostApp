@@ -104,7 +104,7 @@ public class FormFragment extends Fragment {
 
                         @Override
                         public void onFailure(Call<Post> call, Throwable t) {
-                            Log.e("No edited", t.getLocalizedMessage());
+                            Log.e("Not edited", t.getLocalizedMessage());
                             Snackbar.make(
                                     binding.getRoot(),
                                     t.getLocalizedMessage(),

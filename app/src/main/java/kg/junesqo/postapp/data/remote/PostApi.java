@@ -34,7 +34,7 @@ public interface PostApi {
             @Body Post post
     );
 
-    @DELETE("/posts/{postId}")
+    @DELETE("/posts/{id}")
     Call<Post> deletePost(
             @Path("id") String id
     );
