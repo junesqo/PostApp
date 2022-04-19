@@ -1,15 +1,18 @@
 package kg.junesqo.postapp.ui.posts;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import kg.junesqo.postapp.R;
 import kg.junesqo.postapp.data.models.Post;
 import kg.junesqo.postapp.databinding.ItemPostBinding;
 
@@ -34,6 +37,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     @Override
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
         holder.onBind(posts.get(position));
+        Bundle bundle = new Bundle();
+        bundle.putString("postId", String.valueOf(posts.get(position).getId()));
+        holder.itemView.setOnClickListener(
+                Navigation.createNavigateOnClickListener(R.id.action_postsFragment_to_formFragment, bundle)
+        );
     }
 
     @Override

@@ -9,5 +9,15 @@
         android:id="@+id/postsFragment"
         tools:layout="@layout/fragment_posts"
         android:name="kg.junesqo.postapp.ui.posts.PostsFragment"
-        android:label="PostsFragment" />
+        android:label="PostsFragment" >
+        <action
+            android:id="@+id/action_postsFragment_to_formFragment"
+            app:destination="@id/formFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/formFragment"
+        android:name="kg.junesqo.postapp.ui.form.FormFragment"
+        android:label="fragment_form"
+        tools:layout="@layout/fragment_form" />
 </navigation>
