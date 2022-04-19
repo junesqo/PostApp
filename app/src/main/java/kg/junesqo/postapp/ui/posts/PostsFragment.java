@@ -36,6 +36,8 @@ public class PostsFragment extends Fragment implements OnItemClickListener {
     private FragmentPostsBinding binding;
     private PostAdapter adapter;
 
+    private static final int groupId = 41;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +68,7 @@ public class PostsFragment extends Fragment implements OnItemClickListener {
     }
 
     private void inflateList(){
-        App.api.getPosts().enqueue(new Callback<List<Post>>() {
+        App.api.getGroupPosts(groupId).enqueue(new Callback<List<Post>>() {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
                 if (response.isSuccessful() && response.body() != null){

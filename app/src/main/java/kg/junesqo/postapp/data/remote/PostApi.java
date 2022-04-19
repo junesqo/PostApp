@@ -18,6 +18,11 @@ public interface PostApi {
     @GET("/posts")
     Call<List<Post>> getPosts();
 
+    @GET("/posts?sort=asc")
+    Call<List<Post>> getGroupPosts(
+            @Query("group") int groupId
+            );
+
     @GET("/posts/{id}")
     Call<Post> getPost(
             @Path("id") String id

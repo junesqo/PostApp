@@ -12,7 +12,10 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import kg.junesqo.postapp.OnItemClickListener;
 import kg.junesqo.postapp.R;
@@ -22,8 +25,10 @@ import kg.junesqo.postapp.databinding.ItemPostBinding;
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
 
     private OnItemClickListener onItemClickListener;
-
     private List<Post> posts = new ArrayList<>();
+
+    private Map<Integer, String> userMap = new HashMap<>();
+    Set<Map.Entry<Integer, String>> set = userMap.entrySet();
 
     public PostAdapter(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
@@ -40,7 +45,23 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         ItemPostBinding binding = ItemPostBinding.inflate(
                 LayoutInflater.from(parent.getContext()), parent, false
         );
+        loadUserMap();
         return new PostViewHolder(binding);
+    }
+
+    private void loadUserMap() {
+        userMap.put(0, "Рахат");
+        userMap.put(1, "Мэльсов Ислам");
+        userMap.put(2, "Советбеков Нурель");
+        userMap.put(3, "Курманбеков Матай");
+        userMap.put(4, "Марат Жумабаев");
+        userMap.put(5, "Эрнисов Санжар");
+        userMap.put(6, "Бурибоев Элмурод");
+        userMap.put(7, "Турдукулов Нурмухаммед");
+        userMap.put(8, "Исмаилов Арстанбек");
+        userMap.put(9, "Дастан Эркинов");
+        userMap.put(10, "Укуев Бексултан");
+        userMap.put(11, "Рустам Гашигулин");
     }
 
     @Override
@@ -76,7 +97,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         }
 
         public void onBind(Post post) {
-            binding.tvUserId.setText(String.valueOf(post.getUserId()));
+            binding.tvUserId.setText(userMap.get(post.getUserId()));
             binding.tvTitle.setText(post.getTitle());
             binding.tvContent.setText(post.getContent());
         }
